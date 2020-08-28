@@ -10,7 +10,6 @@
 #include <cstdio>
 #include <cmath>
 #include <cstring>
-#include <algorithm>
 
 using namespace std;
 
@@ -38,39 +37,24 @@ int main(){
 		
 			scanf("%d %d %d", &x, &y, &r);
 
-			for(int f= x-d; abs(f-x)<= d; ++f)
-				for(int c= y-d; abs(c-y)<= d; ++c)
+			for(int f= x-d; abs(f-x)<= d; ++f){
+				for(int c= y-d; abs(c-y)<= d; ++c){
 					if(VALIDO(f, c)){
 				
 						C[f][c]+= r;
 						
-						if(m < C[f][c]){
+						if((m < C[f][c]) || 
+						   (m == C[f][c]) && ((f < rf) or (f == rf && c < rc))){
 						
 							m= C[f][c];
 							rf= f;
 							rc= c;
 
-						}else{
-
-							if(m == C[f][c] && f < rf){
-			
-								m= C[f][c];
-								rf= f;
-								rc= c;
-
-							}else{
-
-								if(m == C[f][c] && f == rf && c < rc){
-						
-									m= C[f][c];
-									rf= f;
-									rc= c;
-								}
-							}
-
 						}
 
 					}
+				}
+			}
 
 		}
 
