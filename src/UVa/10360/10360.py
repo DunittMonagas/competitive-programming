@@ -15,6 +15,7 @@ def main():
 	lines = [line for line in stdin.readlines() if line.strip()]
 
 	cont = 1
+	str_output = ""
 	s = int(lines[0])
 
 	for _ in range(s):
@@ -57,7 +58,9 @@ def main():
 
 			cont += 1
 
-		print(rmin, cmin, smax)
+		str_output += " ".join([str(rmin), str(cmin), str(smax) + "\n"])
+
+	stdout.write(str_output)
 
 
 if __name__ == "__main__":
